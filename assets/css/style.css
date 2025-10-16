@@ -1,0 +1,122 @@
+/* Custom ChainCert Styles */
+:root {
+    --cert-blue: #1e40af;
+    --cert-gold: #f59e0b;
+    --blockchain-green: #10b981;
+    --dark-bg: #0f172a;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: #334155;
+}
+
+.hero {
+    background: linear-gradient(135deg, var(--cert-blue) 0%, #3b82f6 100%);
+    color: white;
+    padding: 2rem 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    color: var(--cert-gold);
+}
+
+.btn-primary {
+    background: var(--cert-gold);
+    color: var(--dark-bg);
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.btn-primary:hover {
+    background: #d97706;
+    transform: translateY(-2px);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--cert-blue);
+}
+
+.workflow-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.step {
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+}
+
+.step-number {
+    background: var(--cert-gold);
+    color: var(--dark-bg);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+}
+
+.waitlist-form {
+    max-width: 500px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.waitlist-form input {
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .workflow-diagram {
+        flex-direction: column;
+    }
+}

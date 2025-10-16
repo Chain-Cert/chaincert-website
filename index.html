@@ -1,0 +1,142 @@
+---
+layout: default
+title: ChainCert - Compliance-as-Code for Safety-Critical Systems
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include head.html %}
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1><a href="/">Chain<span class="highlight">Cert</span></a></h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#docs">Documentation</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://github.com/Chain-Cert" class="btn-github" target="_blank">GitHub</a></li>
+                </ul>
+            </nav>
+            
+            <div class="hero-content">
+                <h1>Compliance-<span class="highlight">as-Code</span></h1>
+                <h2>Immutable DO-254 & DO-178 Certification on Blockchain</h2>
+                <p>Keep your engineering workflows. Get certification-ready baselines automatically. Verify compliance in minutes, not months.</p>
+                <div class="hero-cta">
+                    <a href="#waitlist" class="btn-primary">Join Waitlist</a>
+                    <a href="https://github.com/Chain-Cert" class="btn-secondary" target="_blank">View on GitHub</a>
+                </div>
+                <div class="hero-stats">
+                    <span>DO-254 Compliant</span>
+                    <span>DO-178 Ready</span>
+                    <span>Hyperledger Fabric</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Immutable Baselines</h3>
+                    <p>Snapshot your artifacts at certification milestones with cryptographic guarantees. Every baseline is tamper-proof and verifiable.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Workflow Enforcement</h3>
+                    <p>Chaincode enforces DO-254/DO-178 process gates. No step advances without required approvals and verifications.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Zero Workflow Disruption</h3>
+                    <p>Engineers use their existing tools (DOORS, Git, Jira). ChainCert captures compliance evidence automatically.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Instant Audits</h3>
+                    <p>Certification authorities query blockchain evidence directly. Reduce audit times from months to minutes.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Open Source Chaincode</h3>
+                    <p>Built on Hyperledger Fabric. Community-driven, enterprise-ready, fully auditable.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Enterprise Integrations</h3>
+                    <p>Seamless connectors for Polarion, GitLab, DOORS Next, and aerospace toolchains.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2>How ChainCert Works</h2>
+            <div class="workflow-diagram">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Normal Development</h3>
+                    <p>Engineers work in Git, DOORS, Jira as usual</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Baseline Trigger</h3>
+                    <p>Process gates trigger at milestones (reviews, approvals)</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Snapshot & Hash</h3>
+                    <p>Cryptographic snapshots of artifacts + dependencies</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Blockchain Commit</h3>
+                    <p>Immutable record on Hyperledger Fabric with signatures</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Certification Ready</h3>
+                    <p>FAA/EASA auditors verify compliance instantly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="waitlist" class="waitlist">
+        <div class="container">
+            <h2>Early Access</h2>
+            <p>Be first to deploy ChainCert in your organization</p>
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="waitlist-form">
+                <input type="email" name="email" placeholder="your.email@company.com" required>
+                <input type="text" name="company" placeholder="Company Name">
+                <input type="text" name="role" placeholder="Role (Engineer, Manager, etc.)">
+                <button type="submit" class="btn-primary">Join Waitlist</button>
+            </form>
+            <p class="form-note">No spam. Unsubscribe anytime. We'll notify you of beta access and pilots.</p>
+        </div>
+    </section>
+
+    <section id="docs" class="docs-teaser">
+        <div class="container">
+            <h2>Technical Documentation</h2>
+            <p>Explore our open source chaincode, integration guides, and DO-254 compliance documentation</p>
+            <div class="docs-links">
+                <a href="/docs/" class="btn-secondary">Read Docs</a>
+                <a href="https://github.com/Chain-Cert/chaincert-chaincode" class="btn-github" target="_blank">Chaincode Repo</a>
+            </div>
+        </div>
+    </section>
+
+    {% include footer.html %}
+    
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>
