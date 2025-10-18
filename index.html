@@ -1,82 +1,360 @@
----
-layout: default
-title: ChainCert - Compliance-as-Code for Safety-Critical Systems
----
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% include head.html %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChainCert - Compliance-as-Code for DO-254 & DO-178</title>
+    <meta name="description" content="Blockchain certification baselines on Hyperledger Fabric. Immutable DO-254 & DO-178 compliance.">
+    
+    <!-- Internal CSS - No external dependencies -->
+    <style>
+        :root {
+            --cert-blue: #1e40af;
+            --cert-gold: #f59e0b;
+            --blockchain-green: #10b981;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            background: var(--light-bg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header */
+        .hero {
+            background: linear-gradient(135deg, var(--cert-blue) 0%, #3b82f6 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .hero h1 span.highlight {
+            color: var(--cert-gold);
+        }
+        
+        .hero h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--cert-gold);
+            color: var(--dark-bg);
+        }
+        
+        .btn-primary:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--cert-blue);
+        }
+        
+        .hero-stats {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .hero-stats span {
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--cert-blue);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--cert-blue);
+            text-align: center;
+        }
+        
+        .feature-card h3 {
+            color: var(--cert-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 4rem 0;
+            background: var(--light-bg);
+        }
+        
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--cert-blue);
+        }
+        
+        .workflow-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .step-number {
+            background: var(--cert-gold);
+            color: var(--dark-bg);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .step-arrow {
+            font-size: 2rem;
+            align-self: center;
+            color: var(--cert-blue);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 4rem 0;
+            background: var(--cert-blue);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            margin-top: 1rem;
+        }
+        
+        .footer-links a {
+            color: #93c5fd;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .workflow-steps { flex-direction: column; align-items: center; }
+            .step-arrow { transform: rotate(90deg); }
+            .hero-stats { flex-direction: column; gap: 1rem; }
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            color: white;
+            margin: 0;
+        }
+        
+        .logo span.highlight {
+            color: var(--cert-gold);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--cert-gold);
+        }
+        
+        .hero {
+            padding-top: 80px;
+        }
+    </style>
 </head>
 <body>
-    <header class="hero">
+    <!-- Fixed Navigation -->
+    <nav class="navbar">
         <div class="container">
-            <nav class="navbar">
+            <div class="navbar-content">
                 <div class="logo">
                     <h1><a href="/">Chain<span class="highlight">Cert</span></a></h1>
                 </div>
                 <ul class="nav-links">
                     <li><a href="#features">Features</a></li>
                     <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#docs">Documentation</a></li>
+                    <li><a href="https://github.com/ChainCert" target="_blank">GitHub</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="https://github.com/Chain-Cert" class="btn-github" target="_blank">GitHub</a></li>
                 </ul>
-            </nav>
-            
-            <div class="hero-content">
-                <h1>Compliance-<span class="highlight">as-Code</span></h1>
-                <h2>Immutable DO-254 & DO-178 Certification on Blockchain</h2>
-                <p>Keep your engineering workflows. Get certification-ready baselines automatically. Verify compliance in minutes, not months.</p>
-                <div class="hero-cta">
-                    <a href="#waitlist" class="btn-primary">Join Waitlist</a>
-                    <a href="https://github.com/Chain-Cert" class="btn-secondary" target="_blank">View on GitHub</a>
-                </div>
-                <div class="hero-stats">
-                    <span>DO-254 Compliant</span>
-                    <span>DO-178 Ready</span>
-                    <span>Hyperledger Fabric</span>
-                </div>
             </div>
         </div>
-    </header>
+    </nav>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Compliance-<span class="highlight">as-Code</span></h1>
+            <h2>Immutable DO-254 & DO-178 Certification on Blockchain</h2>
+            <p>Engineers keep their tools and workflows. ChainCert captures certification-ready baselines automatically on Hyperledger Fabric.</p>
+            <div>
+                <a href="https://github.com/ChainCert" class="btn btn-primary" target="_blank">⭐ Star on GitHub</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
+            <div class="hero-stats">
+                <span>DO-254 Compliant</span>
+                <span>DO-178 Ready</span>
+                <span>Hyperledger Fabric</span>
+                <span>Open Source</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
     <section id="features" class="features">
         <div class="container">
             <h2>Key Features</h2>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <h3>Immutable Baselines</h3>
-                    <p>Snapshot your artifacts at certification milestones with cryptographic guarantees. Every baseline is tamper-proof and verifiable.</p>
+                    <h3>🔒 Immutable Baselines</h3>
+                    <p>Cryptographic snapshots of artifacts at certification milestones. Tamper-proof, verifiable by FAA/EASA.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Workflow Enforcement</h3>
-                    <p>Chaincode enforces DO-254/DO-178 process gates. No step advances without required approvals and verifications.</p>
+                    <h3>⚙️ Workflow Enforcement</h3>
+                    <p>Chaincode gates enforce DO-254/DO-178 processes. Multi-party approvals before baseline creation.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Zero Workflow Disruption</h3>
-                    <p>Engineers use their existing tools (DOORS, Git, Jira). ChainCert captures compliance evidence automatically.</p>
+                    <h3>🔄 Zero Disruption</h3>
+                    <p>Works with Git, DOORS, Jira, Polarion. No workflow changes for engineers.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Instant Audits</h3>
-                    <p>Certification authorities query blockchain evidence directly. Reduce audit times from months to minutes.</p>
+                    <h3>⏱️ Instant Audits</h3>
+                    <p>Certification authorities query blockchain evidence directly. Audits in minutes, not months.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Open Source Chaincode</h3>
-                    <p>Built on Hyperledger Fabric. Community-driven, enterprise-ready, fully auditable.</p>
+                    <h3>🔗 Enterprise Ready</h3>
+                    <p>Private Fabric channels, role-based access, DO-178C tool qualification path.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Enterprise Integrations</h3>
-                    <p>Seamless connectors for Polarion, GitLab, DOORS Next, and aerospace toolchains.</p>
+                    <h3>📖 Open Source</h3>
+                    <p>Apache 2.0 licensed chaincode. Community contributions welcome.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- How It Works -->
     <section id="how-it-works" class="how-it-works">
         <div class="container">
             <h2>How ChainCert Works</h2>
-            <div class="workflow-diagram">
+            <div class="workflow-steps">
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Normal Development</h3>
@@ -86,57 +364,64 @@ title: ChainCert - Compliance-as-Code for Safety-Critical Systems
                 <div class="step">
                     <div class="step-number">2</div>
                     <h3>Baseline Trigger</h3>
-                    <p>Process gates trigger at milestones (reviews, approvals)</p>
+                    <p>Process gates at milestones (reviews, approvals)</p>
                 </div>
                 <div class="step-arrow">→</div>
                 <div class="step">
                     <div class="step-number">3</div>
                     <h3>Snapshot & Hash</h3>
-                    <p>Cryptographic snapshots of artifacts + dependencies</p>
+                    <p>Cryptographic capture of artifacts + dependencies</p>
                 </div>
                 <div class="step-arrow">→</div>
                 <div class="step">
                     <div class="step-number">4</div>
                     <h3>Blockchain Commit</h3>
-                    <p>Immutable record on Hyperledger Fabric with signatures</p>
+                    <p>Immutable record on Hyperledger Fabric</p>
                 </div>
                 <div class="step-arrow">→</div>
                 <div class="step">
                     <div class="step-number">5</div>
                     <h3>Certification Ready</h3>
-                    <p>FAA/EASA auditors verify compliance instantly</p>
+                    <p>Auditors verify compliance instantly</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="waitlist" class="waitlist">
+    <!-- CTA -->
+    <section class="cta">
         <div class="container">
-            <h2>Early Access</h2>
-            <p>Be first to deploy ChainCert in your organization</p>
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="waitlist-form">
-                <input type="email" name="email" placeholder="your.email@company.com" required>
-                <input type="text" name="company" placeholder="Company Name">
-                <input type="text" name="role" placeholder="Role (Engineer, Manager, etc.)">
-                <button type="submit" class="btn-primary">Join Waitlist</button>
-            </form>
-            <p class="form-note">No spam. Unsubscribe anytime. We'll notify you of beta access and pilots.</p>
+            <h2>Ready to Chain Your Compliance?</h2>
+            <p>Star us on GitHub and follow development</p>
+            <a href="https://github.com/ChainCert" class="btn btn-primary" target="_blank">⭐ Star ChainCert</a>
         </div>
     </section>
 
-    <section id="docs" class="docs-teaser">
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <h2>Technical Documentation</h2>
-            <p>Explore our open source chaincode, integration guides, and DO-254 compliance documentation</p>
-            <div class="docs-links">
-                <a href="/docs/" class="btn-secondary">Read Docs</a>
-                <a href="https://github.com/Chain-Cert/chaincert-chaincode" class="btn-github" target="_blank">Chaincode Repo</a>
+            <h3>ChainCert</h3>
+            <p>Compliance-as-Code for Safety-Critical Systems</p>
+            <div class="footer-links">
+                <a href="https://github.com/ChainCert">GitHub</a>
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="mailto:hello@chaincert.com">Contact</a>
             </div>
+            <p>&copy; 2025 ChainCert. Built with ❤️ for aerospace compliance.</p>
         </div>
-    </section>
+    </footer>
 
-    {% include footer.html %}
-    
-    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+    <script>
+        // Simple smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
